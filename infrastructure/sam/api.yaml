@@ -32,7 +32,13 @@ paths:
           content:
             application/json:
               schema:
+<<<<<<< HEAD
                 $ref: "#/components/schemas/survey"
+=======
+                $ref: '#/components/schemas/survey'
+      # security:
+      #   - sigv4Reference: []
+>>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       x-amazon-apigateway-integration:
         httpMethod: get
         type: aws
@@ -58,9 +64,13 @@ paths:
         content:
           application/json:
             schema:
+<<<<<<< HEAD
               $ref: "#/components/schemas/submission"
       security:
         - UserPool: []
+=======
+              $ref: '#/components/schemas/submission'
+>>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       responses:
         "200":
           description: |-
@@ -79,6 +89,8 @@ paths:
             text/plain:
               schema:
                 type: string
+      # security:
+      #   - sigv4Reference: []
       x-amazon-apigateway-integration:
         httpMethod: post
         type: aws_proxy
@@ -113,6 +125,8 @@ paths:
               schema:
                 type: string
           content: {}
+      # security:
+      #   - sigv4Reference: []
       x-amazon-apigateway-integration:
         type: mock
         requestTemplates:
@@ -155,7 +169,13 @@ paths:
           content:
             application/json:
               schema:
+<<<<<<< HEAD
                 $ref: "#/components/schemas/resiliencyResources"
+=======
+                $ref: '#/components/schemas/resiliencyResources'
+      # security:
+      #   - sigv4Reference: []
+>>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       x-amazon-apigateway-integration:
         httpMethod: get
         type: aws
@@ -180,9 +200,13 @@ paths:
         content:
           application/json:
             schema:
+<<<<<<< HEAD
               $ref: "#/components/schemas/visitedResiliencyResources"
       security:
         - UserPool: []
+=======
+              $ref: '#/components/schemas/visitedResiliencyResources'
+>>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       responses:
         "200":
           description: |-
@@ -235,6 +259,8 @@ paths:
               schema:
                 type: string
           content: {}
+      # security:
+      #   - sigv4Reference: []
       x-amazon-apigateway-integration:
         type: mock
         requestTemplates:
@@ -290,6 +316,15 @@ paths:
             minimum: 0
             maximum: 10
           example: 5
+        - in: query
+          name: uuid
+          description: >
+            If this parameter is specified, all other parameters are ignored
+            and only the submission with the given UUID is fetched.
+            If no such submission exists, an empty list is fetched.
+          schema:
+            type: string
+          example: f2f2011c8d2547849dfce99ae4b75797
       responses:
         "200":
           description: 200 response
@@ -306,7 +341,13 @@ paths:
           content:
             application/json:
               schema:
+<<<<<<< HEAD
                 $ref: "#/components/schemas/submissions"
+=======
+                $ref: '#/components/schemas/submissions'
+      # security:
+      #   - sigv4Reference: []
+>>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       x-amazon-apigateway-integration:
         # NB (nphair): Post request are always used for invoking a lambda.
         # https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html
@@ -343,6 +384,8 @@ paths:
               schema:
                 type: string
           content: {}
+      # security:
+      #   - sigv4Reference: []
       x-amazon-apigateway-integration:
         type: mock
         requestTemplates:
@@ -427,6 +470,8 @@ paths:
             application/json:
               schema:
                 type: string
+      # security:
+      #   - sigv4Reference: []
       x-amazon-apigateway-integration:
         # NB (nphair): Post request are always used for invoking a lambda.
         # https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html
@@ -469,6 +514,8 @@ paths:
               schema:
                 type: string
           content: {}
+      # security:
+      #   - sigv4Reference: []
       x-amazon-apigateway-integration:
         type: mock
         requestTemplates:
@@ -486,6 +533,7 @@ paths:
             responseTemplates:
               application/json: |
                 {}
+<<<<<<< HEAD
   /submission:
     get:
       operationId: getSubmission
@@ -743,6 +791,16 @@ components:
         # TODO (nphair): Find a better way than hardcoding ids.
         providerARNs:
           - "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${AWS::Region}_pqNwySoyF"
+=======
+
+components:
+  # securitySchemes:
+  #   sigv4Reference:
+  #     type: apiKey
+  #     name: Authorization
+  #     in: header
+  #     x-amazon-apigateway-authtype: awsSigv4
+>>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
   schemas:
     survey:
       type: object
@@ -849,10 +907,3 @@ components:
           type: boolean
         errormsg:
           type: string
-    setTimestampRequest:
-      type: object
-      properties:
-        uuid:
-          type: string
-        timestamp:
-          type: number
