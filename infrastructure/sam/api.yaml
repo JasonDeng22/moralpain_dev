@@ -32,13 +32,9 @@ paths:
           content:
             application/json:
               schema:
-<<<<<<< HEAD
-                $ref: "#/components/schemas/survey"
-=======
                 $ref: '#/components/schemas/survey'
       # security:
       #   - sigv4Reference: []
->>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       x-amazon-apigateway-integration:
         httpMethod: get
         type: aws
@@ -64,13 +60,7 @@ paths:
         content:
           application/json:
             schema:
-<<<<<<< HEAD
-              $ref: "#/components/schemas/submission"
-      security:
-        - UserPool: []
-=======
               $ref: '#/components/schemas/submission'
->>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       responses:
         "200":
           description: |-
@@ -169,13 +159,9 @@ paths:
           content:
             application/json:
               schema:
-<<<<<<< HEAD
-                $ref: "#/components/schemas/resiliencyResources"
-=======
                 $ref: '#/components/schemas/resiliencyResources'
       # security:
       #   - sigv4Reference: []
->>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       x-amazon-apigateway-integration:
         httpMethod: get
         type: aws
@@ -200,13 +186,7 @@ paths:
         content:
           application/json:
             schema:
-<<<<<<< HEAD
-              $ref: "#/components/schemas/visitedResiliencyResources"
-      security:
-        - UserPool: []
-=======
               $ref: '#/components/schemas/visitedResiliencyResources'
->>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       responses:
         "200":
           description: |-
@@ -280,7 +260,7 @@ paths:
                 {}
   /admin/submissions:
     get:
-      operationId: getSubmissions
+      operationId: getAdminSubmissions
       summary: Get survey results
       description: >
         Fetch from the database all of the records that match the
@@ -341,13 +321,9 @@ paths:
           content:
             application/json:
               schema:
-<<<<<<< HEAD
-                $ref: "#/components/schemas/submissions"
-=======
                 $ref: '#/components/schemas/submissions'
       # security:
       #   - sigv4Reference: []
->>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
       x-amazon-apigateway-integration:
         # NB (nphair): Post request are always used for invoking a lambda.
         # https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html
@@ -533,7 +509,6 @@ paths:
             responseTemplates:
               application/json: |
                 {}
-<<<<<<< HEAD
   /submission:
     get:
       operationId: getSubmission
@@ -664,7 +639,7 @@ paths:
       description: >
         Get the MDQ submissions using TypeDB.
       tags:
-        - Submission
+        - User
       responses:
         "200":
           description: |-
@@ -703,7 +678,7 @@ paths:
       description: >
         Submit with TypeDB
       tags:
-        - Submission
+        - User
       requestBody:
         content:
           application/json:
@@ -791,7 +766,6 @@ components:
         # TODO (nphair): Find a better way than hardcoding ids.
         providerARNs:
           - "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${AWS::Region}_pqNwySoyF"
-=======
 
 components:
   # securitySchemes:
@@ -800,7 +774,6 @@ components:
   #     name: Authorization
   #     in: header
   #     x-amazon-apigateway-authtype: awsSigv4
->>>>>>> 2eed09bd275f40df77fbb55f0671f72ba0977a76
   schemas:
     survey:
       type: object

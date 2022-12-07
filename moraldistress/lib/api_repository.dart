@@ -83,7 +83,7 @@ class ApiRepository {
     final uapi = mapi.getUserApi();
 
     try {
-      final res = await uapi.submitSurvey(submission: submission);
+      final res = await uapi.submitSubmissionTypeDB(submission: submission);
       return res.statusCode == 200;
     } catch (err) {
       log.shout('Error submitting survey', err);
